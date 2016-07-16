@@ -7,16 +7,66 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9FD7605E1CE9FA1D007EE7CB /* KPCSearchableOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FD7605D1CE9FA1D007EE7CB /* KPCSearchableOutlineView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9F1E5A871CF1975100D18959 /* KPCSearchableOutlineView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD7605A1CE9FA1D007EE7CB /* KPCSearchableOutlineView.framework */; };
+		9F1E5A891CF1976400D18959 /* KPCSearchableOutlineView.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD7605A1CE9FA1D007EE7CB /* KPCSearchableOutlineView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9F23C8AF1D3A81E500B2630B /* DataCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F23C8AE1D3A81E500B2630B /* DataCellView.swift */; };
+		9F80BF371CEC6272006CBECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F80BF361CEC6272006CBECA /* AppDelegate.swift */; };
+		9F80BF391CEC6272006CBECA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F80BF381CEC6272006CBECA /* ViewController.swift */; };
+		9F80BF3B1CEC6272006CBECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F80BF3A1CEC6272006CBECA /* Assets.xcassets */; };
+		9F80BF3E1CEC6272006CBECA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F80BF3C1CEC6272006CBECA /* Main.storyboard */; };
+		9FBB2B741D3A7168005D2784 /* DefaultWebsites.dict in Resources */ = {isa = PBXBuildFile; fileRef = 9FBB2B731D3A7168005D2784 /* DefaultWebsites.dict */; };
+		9FBB2B761D3A7184005D2784 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBB2B751D3A7184005D2784 /* Node.swift */; };
+		9FD760681CE9FDC7007EE7CB /* SearchableOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD760671CE9FDC7007EE7CB /* SearchableOutlineView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9F1E5A851CF1974D00D18959 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9FD760511CE9FA1D007EE7CB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FD760591CE9FA1D007EE7CB;
+			remoteInfo = KPCSearchableOutlineView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9F1E5A881CF1975700D18959 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9F1E5A891CF1976400D18959 /* KPCSearchableOutlineView.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		9F23C8AE1D3A81E500B2630B /* DataCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataCellView.swift; sourceTree = "<group>"; };
+		9F80BF341CEC6272006CBECA /* KPCSearchableOutlineViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KPCSearchableOutlineViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F80BF361CEC6272006CBECA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9F80BF381CEC6272006CBECA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9F80BF3A1CEC6272006CBECA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9F80BF3D1CEC6272006CBECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9F80BF3F1CEC6272006CBECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FBB2B731D3A7168005D2784 /* DefaultWebsites.dict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultWebsites.dict; sourceTree = "<group>"; };
+		9FBB2B751D3A7184005D2784 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		9FD7605A1CE9FA1D007EE7CB /* KPCSearchableOutlineView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KPCSearchableOutlineView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9FD7605D1CE9FA1D007EE7CB /* KPCSearchableOutlineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KPCSearchableOutlineView.h; sourceTree = "<group>"; };
 		9FD7605F1CE9FA1D007EE7CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FD760671CE9FDC7007EE7CB /* SearchableOutlineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchableOutlineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9F80BF311CEC6272006CBECA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F1E5A871CF1975100D18959 /* KPCSearchableOutlineView.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FD760561CE9FA1D007EE7CB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -27,10 +77,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F80BF351CEC6272006CBECA /* KPCSearchableOutlineViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				9F80BF361CEC6272006CBECA /* AppDelegate.swift */,
+				9F80BF381CEC6272006CBECA /* ViewController.swift */,
+				9FBB2B751D3A7184005D2784 /* Node.swift */,
+				9F23C8AE1D3A81E500B2630B /* DataCellView.swift */,
+				9F80BF3A1CEC6272006CBECA /* Assets.xcassets */,
+				9F80BF3C1CEC6272006CBECA /* Main.storyboard */,
+				9F80BF3F1CEC6272006CBECA /* Info.plist */,
+				9FBB2B731D3A7168005D2784 /* DefaultWebsites.dict */,
+			);
+			path = KPCSearchableOutlineViewDemo;
+			sourceTree = "<group>";
+		};
 		9FD760501CE9FA1D007EE7CB = {
 			isa = PBXGroup;
 			children = (
 				9FD7605C1CE9FA1D007EE7CB /* KPCSearchableOutlineView */,
+				9F80BF351CEC6272006CBECA /* KPCSearchableOutlineViewDemo */,
 				9FD7605B1CE9FA1D007EE7CB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -39,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				9FD7605A1CE9FA1D007EE7CB /* KPCSearchableOutlineView.framework */,
+				9F80BF341CEC6272006CBECA /* KPCSearchableOutlineViewDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -46,7 +113,7 @@
 		9FD7605C1CE9FA1D007EE7CB /* KPCSearchableOutlineView */ = {
 			isa = PBXGroup;
 			children = (
-				9FD7605D1CE9FA1D007EE7CB /* KPCSearchableOutlineView.h */,
+				9FD760671CE9FDC7007EE7CB /* SearchableOutlineView.swift */,
 				9FD7605F1CE9FA1D007EE7CB /* Info.plist */,
 			);
 			path = KPCSearchableOutlineView;
@@ -59,13 +126,31 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FD7605E1CE9FA1D007EE7CB /* KPCSearchableOutlineView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		9F80BF331CEC6272006CBECA /* KPCSearchableOutlineViewDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F80BF421CEC6272006CBECA /* Build configuration list for PBXNativeTarget "KPCSearchableOutlineViewDemo" */;
+			buildPhases = (
+				9F80BF301CEC6272006CBECA /* Sources */,
+				9F80BF311CEC6272006CBECA /* Frameworks */,
+				9F80BF321CEC6272006CBECA /* Resources */,
+				9F1E5A881CF1975700D18959 /* Copy Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9F1E5A861CF1974D00D18959 /* PBXTargetDependency */,
+			);
+			name = KPCSearchableOutlineViewDemo;
+			productName = KPCSearchableOutlineViewDemo;
+			productReference = 9F80BF341CEC6272006CBECA /* KPCSearchableOutlineViewDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		9FD760591CE9FA1D007EE7CB /* KPCSearchableOutlineView */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FD760621CE9FA1D007EE7CB /* Build configuration list for PBXNativeTarget "KPCSearchableOutlineView" */;
@@ -90,9 +175,13 @@
 		9FD760511CE9FA1D007EE7CB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = onekiloparsec;
 				TargetAttributes = {
+					9F80BF331CEC6272006CBECA = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 					9FD760591CE9FA1D007EE7CB = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
@@ -104,6 +193,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 9FD760501CE9FA1D007EE7CB;
 			productRefGroup = 9FD7605B1CE9FA1D007EE7CB /* Products */;
@@ -111,11 +201,22 @@
 			projectRoot = "";
 			targets = (
 				9FD760591CE9FA1D007EE7CB /* KPCSearchableOutlineView */,
+				9F80BF331CEC6272006CBECA /* KPCSearchableOutlineViewDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9F80BF321CEC6272006CBECA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F80BF3B1CEC6272006CBECA /* Assets.xcassets in Resources */,
+				9FBB2B741D3A7168005D2784 /* DefaultWebsites.dict in Resources */,
+				9F80BF3E1CEC6272006CBECA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FD760581CE9FA1D007EE7CB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -126,16 +227,71 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9F80BF301CEC6272006CBECA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FBB2B761D3A7184005D2784 /* Node.swift in Sources */,
+				9F80BF391CEC6272006CBECA /* ViewController.swift in Sources */,
+				9F23C8AF1D3A81E500B2630B /* DataCellView.swift in Sources */,
+				9F80BF371CEC6272006CBECA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FD760551CE9FA1D007EE7CB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FD760681CE9FDC7007EE7CB /* SearchableOutlineView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		9F1E5A861CF1974D00D18959 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9FD760591CE9FA1D007EE7CB /* KPCSearchableOutlineView */;
+			targetProxy = 9F1E5A851CF1974D00D18959 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9F80BF3C1CEC6272006CBECA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9F80BF3D1CEC6272006CBECA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		9F80BF401CEC6272006CBECA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = KPCSearchableOutlineViewDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.onekiloparsec.KPCSearchableOutlineViewDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9F80BF411CEC6272006CBECA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = KPCSearchableOutlineViewDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.onekiloparsec.KPCSearchableOutlineViewDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		9FD760601CE9FA1D007EE7CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -227,6 +383,7 @@
 		9FD760631CE9FA1D007EE7CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -239,12 +396,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.onekiloparsec.KPCSearchableOutlineView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		9FD760641CE9FA1D007EE7CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -263,6 +422,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9F80BF421CEC6272006CBECA /* Build configuration list for PBXNativeTarget "KPCSearchableOutlineViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F80BF401CEC6272006CBECA /* Debug */,
+				9F80BF411CEC6272006CBECA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9FD760541CE9FA1D007EE7CB /* Build configuration list for PBXProject "KPCSearchableOutlineView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -279,6 +447,7 @@
 				9FD760641CE9FA1D007EE7CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>KPCSearchableOutlineViewDemo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>9F80BF331CEC6272006CBECA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9FD760591CE9FA1D007EE7CB</key>
 		<dict>
 			<key>primary</key>
