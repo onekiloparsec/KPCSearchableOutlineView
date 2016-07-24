@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9F1E5A871CF1975100D18959 /* KPCSearchableOutlineView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD7605A1CE9FA1D007EE7CB /* KPCSearchableOutlineView.framework */; };
 		9F1E5A891CF1976400D18959 /* KPCSearchableOutlineView.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD7605A1CE9FA1D007EE7CB /* KPCSearchableOutlineView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9F23C8AF1D3A81E500B2630B /* DataCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F23C8AE1D3A81E500B2630B /* DataCellView.swift */; };
 		9F80BF371CEC6272006CBECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F80BF361CEC6272006CBECA /* AppDelegate.swift */; };
 		9F80BF391CEC6272006CBECA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F80BF381CEC6272006CBECA /* ViewController.swift */; };
 		9F80BF3B1CEC6272006CBECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F80BF3A1CEC6272006CBECA /* Assets.xcassets */; };
@@ -44,7 +43,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9F23C8AE1D3A81E500B2630B /* DataCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataCellView.swift; sourceTree = "<group>"; };
 		9F80BF341CEC6272006CBECA /* KPCSearchableOutlineViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KPCSearchableOutlineViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F80BF361CEC6272006CBECA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F80BF381CEC6272006CBECA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -85,7 +83,6 @@
 				9F80BF361CEC6272006CBECA /* AppDelegate.swift */,
 				9F80BF381CEC6272006CBECA /* ViewController.swift */,
 				9FBB2B751D3A7184005D2784 /* Node.swift */,
-				9F23C8AE1D3A81E500B2630B /* DataCellView.swift */,
 				9F80BF3A1CEC6272006CBECA /* Assets.xcassets */,
 				9F80BF3C1CEC6272006CBECA /* Main.storyboard */,
 				9F80BF3F1CEC6272006CBECA /* Info.plist */,
@@ -245,7 +242,6 @@
 			files = (
 				9FBB2B761D3A7184005D2784 /* Node.swift in Sources */,
 				9F80BF391CEC6272006CBECA /* ViewController.swift in Sources */,
-				9F23C8AF1D3A81E500B2630B /* DataCellView.swift in Sources */,
 				9F80BF371CEC6272006CBECA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -67,6 +67,9 @@ public extension SearchableNode {
     }
 }
 
+enum SearchableOutlineViewError: ErrorType {
+    case MissingTreeController
+}
 
 public class SearchableOutlineView: NSOutlineView {
     
@@ -78,13 +81,17 @@ public class SearchableOutlineView: NSOutlineView {
     private var filteredTreeController: NSTreeController?
     private var filter: String = ""
 
-    public func filterNodesTree(withString newFilter: String?) {
+    public func filterNodesTree(withString newFilter: String?) throws {
         guard newFilter != nil && newFilter?.characters.count >= 2, let filter = newFilter else {
             self.filter = ""
             self.messageLabel?.hidden = true
 //            [self.outlineScrollView setHidden:NO];
 //            [self.filteredOutlineScrollView setHidden:YES];
             return
+        }
+        
+        guard self.treeController != nil else {
+            throw SearchableOutlineViewError.MissingTreeController
         }
         
         let flatNodes = recursivePreorderTraversal(self.treeController?.arrangedObjects.childNodes)

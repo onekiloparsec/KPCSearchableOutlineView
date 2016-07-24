@@ -699,7 +699,7 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView identifier="DataCell" id="bDQ-dD-adY" customClass="DataCellView" customModule="KPCSearchableOutlineViewDemo" customModuleProvider="target">
+                                                        <tableCellView identifier="DataCell" id="bDQ-dD-adY">
                                                             <rect key="frame" x="1" y="1" width="327" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
