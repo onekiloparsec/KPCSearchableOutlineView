@@ -9,5 +9,4 @@
 import Cocoa
 
 class DataCellView: NSTableCellView {
-    var nodeTitle: String = ""
 }

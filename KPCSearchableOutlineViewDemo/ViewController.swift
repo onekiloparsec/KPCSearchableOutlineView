@@ -9,17 +9,20 @@
 import Cocoa
 import KPCSearchableOutlineView
 
-class ViewController: NSViewController, NSOutlineViewDelegate {
+class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDelegate {
     
     @IBOutlet weak var outlineView: SearchableOutlineView?
+    @IBOutlet weak var searchField: NSSearchField?
+
     @IBOutlet var treeController: NSTreeController?
-    @IBOutlet var nodes: NSArray?
-    @IBOutlet var selectionIndexPaths: NSArray?
+    @IBOutlet var nodes: NSMutableArray?
+    @IBOutlet var selectionIndexPaths: NSMutableArray?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.outlineView?.setDelegate(self)
+        self.searchField?.delegate = self
         
         self.nodes = []
         self.selectionIndexPaths = []
@@ -32,6 +35,7 @@ class ViewController: NSViewController, NSOutlineViewDelegate {
         let entries: [[String: AnyObject]] = plist.objectForKey("entries")! as! [[String : AnyObject]]
         
         print("\(plist)")
+        self.treeController?.selectsInsertedObjects = true
         
         for entry in entries {
             let groupName = entry["group"] as! String
@@ -39,76 +43,55 @@ class ViewController: NSViewController, NSOutlineViewDelegate {
             
             let groupNode = BaseNode()
             groupNode.nodeTitle = groupName
-            groupNode.children = []
-            groupNode.originalChildren = []
+            Swift.print("GroupNode \(groupNode.nodeTitle!)")
+            self.treeController?.addObject(groupNode)
+            self.treeController?.rearrangeObjects()
             
             for groupEntry in groupEntries {
                 let node = BaseNode()
-                node.nodeTitle = groupEntry["name"] as? String
-                node.url = groupEntry["url"] as? String
+                node.nodeTitle = (groupEntry["name"] as! String)
+                node.url = (groupEntry["url"] as! String)
                 node.parent = groupNode
-                groupNode.children?.append(node)
+                groupNode.children.addObject(node)
+                self.treeController?.addChild(groupNode)
+                self.treeController?.rearrangeObjects()
             }
-            
-            self.treeController?.add(groupNode)
         }
     }
     
     func outlineView(outlineView: NSOutlineView, viewForTableColumn tableColumn: NSTableColumn?, item: AnyObject) -> NSView? {
         let cellView: DataCellView = self.outlineView?.makeViewWithIdentifier("DataCell", owner:nil) as! DataCellView
-        let node = item.representedObject!! as! BaseNode
+        let node = item.representedObject as! BaseNode
         if let title = node.nodeTitle {
-            cellView.nodeTitle = title
+            cellView.textField?.stringValue = title
         }
         else {
-            cellView.nodeTitle = "?"            
+            cellView.textField?.stringValue = "?"
+        }
+        if node.children.count > 0 {
+            cellView.imageView?.image = NSWorkspace.sharedWorkspace().iconForFileType(NSFileTypeForHFSTypeCode(UInt32(kGenericFolderIcon)))
+        }
+        else {
+            cellView.imageView?.image = nil
         }
         return cellView
     }
+        
+    func outlineView(outlineView: NSOutlineView, isGroupItem item: AnyObject) -> Bool {
+        return false
+    }
+
+    func searchFieldDidStartSearching(sender: NSSearchField) {
+        Swift.print("Start Searching")
+    }
     
-//        NSEnumerator *entryEnum = [entries objectEnumerator];
-//    
-//    id entry;
-//    while ((entry = [entryEnum nextObject])) {
-//    if ([entry isKindOfClass:[NSDictionary class]]) {
-//    NSString *urlStr = [entry objectForKey:KEY_URL];
-//    
-//    BaseNode *node = [BaseNode nodeWithTitle:nil];
-//    [node setNodeURL:urlStr];
-//    [node setNodeSectionIndex:index];
-//    [node setSelectParent:YES];
-//    if (index == kWebsitesSectionIndex) {
-//				[node setNodeIcon:(STLSmartImage *)[[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kGenericURLIcon)]];
-//    }
-//    else if (index == kConvertersSectionIndex) {
-//				[node setNodeIcon:[STLSmartImage imageNamed:@"ConverterIcon.icns"]];
-//    }
-//    
-//    if ([entry objectForKey:KEY_SEPARATOR]) {
-//    [self insertChildNode:node];
-//				[self.treeController selectParentFromSelection];
-//    }
-//    else if ([entry objectForKey:KEY_FOLDER]) {
-//    [node setNodeTitle:[entry objectForKey:KEY_FOLDER]];
-//    [self insertChildNode:node];
-//				[self.treeController selectParentFromSelection];
-//    }
-//    else if ([entry objectForKey:KEY_URL]) {
-//    [node setNodeTitle:[entry objectForKey:KEY_NAME]];
-//    [self insertChildNode:node];
-//				[self.treeController selectParentFromSelection];
-//    }
-//    else {
-//				NSString *folderName = [entry objectForKey:KEY_GROUP];
-//				[self addFolder:folderName inSection:index root:NO];
-//				NSArray *entries = [entry objectForKey:KEY_ENTRIES];
-//				[self addEntries:entries inSection:index];
-//				[self.treeController selectParentFromSelection];
-//				[self.outlineView collapseItem:[self.outlineView itemAtRow:[self.outlineView selectedRow]]];
-//    }
-//    }
-//    }
-//    }
-//
+    override func controlTextDidChange(notification: NSNotification) {
+        if let searchField = notification.object as? NSSearchField {
+            if searchField.stringValue.characters.count >= 3 {
+                Swift.print("Searching: \(searchField.stringValue)...")
+                self.outlineView?.filterNodesTree(withString: searchField.stringValue)
+            }
+        }
+    }
 }
 

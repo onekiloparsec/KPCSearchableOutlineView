@@ -13,8 +13,8 @@ import KPCSearchableOutlineView
 
     var nodeTitle: String? = nil
     var url: String? = nil
-    var children: [SearchableNode]?
-    var originalChildren: [SearchableNode]?
+    var children: NSMutableArray = NSMutableArray()
+    var originalChildren: NSMutableArray = NSMutableArray()
     weak var parent: SearchableNode?
     
     func searchableContent() -> String {
@@ -26,6 +26,6 @@ import KPCSearchableOutlineView
     }
     
     func isLeaf() -> Bool {
-        return self.children?.count == 0
+        return self.children.count == 0
     }
 }

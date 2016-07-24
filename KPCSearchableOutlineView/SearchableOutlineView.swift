@@ -31,8 +31,8 @@ extension NSIndexPath {
 }
 
 public protocol SearchableNode: NSObjectProtocol {
-    var children: [SearchableNode]? { get set }
-    var originalChildren: [SearchableNode]? { get set }
+    var children: NSMutableArray { get set }
+    var originalChildren: NSMutableArray { get set }
 
     func hash() -> Int
     func searchableContent() -> String
@@ -58,8 +58,8 @@ public extension SearchableNode {
         var activeNode: SearchableNode = self
         
         while activeNode.parentNode() != nil {
-            let index = activeNode.parentNode()!.children!.indexOf(self)
-            indexPath = indexPath.indexPathByAddingIndexInFront(index!)
+            let index = activeNode.parentNode()!.children.indexOfObject(self)
+            indexPath = indexPath.indexPathByAddingIndexInFront(index)
             activeNode = activeNode.parentNode()!
         }
         
@@ -78,7 +78,7 @@ public class SearchableOutlineView: NSOutlineView {
     private var filteredTreeController: NSTreeController?
     private var filter: String = ""
 
-    func filterNodesTree(withString newFilter: String?) {
+    public func filterNodesTree(withString newFilter: String?) {
         guard newFilter != nil && newFilter?.characters.count >= 2, let filter = newFilter else {
             self.filter = ""
             self.messageLabel?.hidden = true
@@ -89,7 +89,7 @@ public class SearchableOutlineView: NSOutlineView {
         
         let flatNodes = recursivePreorderTraversal(self.treeController?.arrangedObjects.childNodes)
         let filteredNodes = flatNodes.filter({ $0.searchableContent().lowercaseString.rangeOfString(filter.lowercaseString) != nil })
-        let filteredLeafNodes = filteredNodes.filter({ $0.children == nil || $0.children!.count == 0 })
+        let filteredLeafNodes = filteredNodes.filter({ $0.children == nil || $0.children.count == 0 })
         
         
 //        NSMutableDictionary *parentsNodes = [NSMutableDictionary dictionary];
@@ -103,11 +103,8 @@ public class SearchableOutlineView: NSOutlineView {
         // Move aside all regular children into a temporary array
         for leafNode in filteredLeafNodes {
             if let parentNode = leafNode.parentNode() {
-                if parentNode.originalChildren == nil {
-                    parentNode.originalChildren = []
-                }
-                if parentNode.originalChildren!.count == 0 && parentNode.children?.count > 0 {
-                    parentNode.originalChildren!.appendContentsOf(parentNode.children!)
+                if parentNode.originalChildren.count == 0 && parentNode.children.count > 0 {
+                    parentNode.originalChildren.addObjectsFromArray(parentNode.children as [AnyObject])
                 }
             }
         }
@@ -115,7 +112,7 @@ public class SearchableOutlineView: NSOutlineView {
         // Re-introduce only valid one.
         for leafNode in filteredLeafNodes {
             if let parentNode = leafNode.parentNode() {
-                parentNode.children?.append(leafNode)
+                parentNode.children.addObject(leafNode)
             }
             
             var rootNode = leafNode
