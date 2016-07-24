@@ -11,10 +11,10 @@ KPCSearchableOutlineView
 A NSOutlineView subclass that simply add search capabilities accross the tree of nodes. Sounds easy, right?
 The only requirement on your side is to have tree objects conform to some basic protocol. That's it.
 
-
 The project includes a demo. This project is in a very early stage and doesn't work' yet entirely. But most
 of the tough things work.
 
+![Demo Searchable OutlineView](http://www.onekilopars.ec/s/KPCSearchableOutlineViewDemo.gif) 
 
 Author
 ------
