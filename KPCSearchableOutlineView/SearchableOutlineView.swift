@@ -98,11 +98,6 @@ public class SearchableOutlineView: NSOutlineView {
         let filteredNodes = flatNodes.filter({ $0.searchableContent().lowercaseString.rangeOfString(filter.lowercaseString) != nil })
         let filteredLeafNodes = filteredNodes.filter({ $0.children == nil || $0.children.count == 0 })
         
-        
-//        NSMutableDictionary *parentsNodes = [NSMutableDictionary dictionary];
-//        NSMutableArray *rootNodes = [NSMutableArray array];
-        
-//        var parentsNodes: [SearchableNode] = []
         var rootNodes: [SearchableNode] = []
 
         // Rebuild the tree from the leaves...
@@ -112,6 +107,7 @@ public class SearchableOutlineView: NSOutlineView {
             if let parentNode = leafNode.parentNode() {
                 if parentNode.originalChildren.count == 0 && parentNode.children.count > 0 {
                     parentNode.originalChildren.addObjectsFromArray(parentNode.children as [AnyObject])
+                    parentNode.children.removeAllObjects()
                 }
             }
         }
@@ -129,70 +125,18 @@ public class SearchableOutlineView: NSOutlineView {
             rootNodes.append(rootNode)
         }
 
-        
-//        [[filteredLeafNodes copy] enumerateObjectsUsingBlock:^(KPCNode *node, NSUInteger idx, BOOL *stop) {
-//            KPCNode *activeNode = node;
-//            KPCNode *activeNodeCopy = nil;
-//            KPCNode *parentNodeCopy = nil;
-//            
-//            if ([[parentsNodes allKeys] containsObject:activeNode.parentNode.identifier]) {
-//            parentNodeCopy = [parentsNodes objectForKey:activeNode.parentNode.identifier];
-//            activeNodeCopy = [activeNode thinCopy];
-//            activeNodeCopy.parentNode = parentNodeCopy;
-//            }
-//            else {
-//            while (activeNode.parentNode) {
-//            activeNodeCopy = [parentsNodes objectForKey:activeNode.identifier];
-//            if (!activeNodeCopy) {
-//            activeNodeCopy = [activeNode thinCopy];
-//            }
-//            parentNodeCopy = [activeNode.parentNode thinCopy];
-//            activeNodeCopy.parentNode = parentNodeCopy;
-//            [parentsNodes setObject:parentNodeCopy forKey:parentNodeCopy.identifier];
-//            activeNode = activeNode.parentNode;
-//            }
-//            
-//            NSAssert(parentNodeCopy.isRoot && parentNodeCopy.isCopy, @"Parent root node is not root?");
-//            [rootNodes addObject:parentNodeCopy];
-//            }
-//            }];
-        
         self.treeController?.content?.removeAllObjects()
         self.treeController?.rearrangeObjects()
         
-        //	NSAssert(activeNode.isRoot, @"At this point, the active node should be root.");
-        //        indexPath = indexPath.indexPathByAddingIndexInFront(activeNode.sectionIndex)
-        
-        //        var indexSet = NSMutableIndexSet()
+        let indexSet = NSMutableIndexSet()
         for (index, rootNode) in rootNodes.enumerate() {
             self.treeController?.insertObject(rootNode, atArrangedObjectIndexPath: NSIndexPath(index: index))
+            indexSet.addIndex(index)
         }
-     
-        //        [self.filteredTreeController.content removeAllObjects];
-        //        [self.filteredTreeController rearrangeObjects];
-        //
-        //        if (rootNodes) {
-        //            NSMutableIndexSet *indexSet = [NSMutableIndexSet indexSet];
-        //            [[rootNodes copy] enumerateObjectsUsingBlock:^(KPCNode *node, NSUInteger idx, BOOL *stop) {
-        //                [self.filteredTreeController insertObject:node atArrangedObjectIndexPath:[node pathIndexPath]];
-        //                [indexSet addIndex:[[node pathIndexPath] indexAtPosition:0]];
-        //                }];
-        //
-        //            [indexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-        //                [self.filteredOutlineView expandItem:[self.filteredOutlineView itemAtRow:idx] expandChildren:YES];
-        //                }];
-        //
-        //            [self.messageLabel setHidden:YES];
-        //            [self.outlineScrollView setHidden:YES];
-        //            [self.filteredOutlineScrollView setHidden:NO];
-        //        }
-        //        else {
-        //            [self.messageLabel setHidden:NO];
-        //            [self.outlineScrollView setHidden:YES];
-        //            [self.filteredOutlineScrollView setHidden:YES];
-        //        }
-        //    }
         
+        for index in indexSet {
+            self.expandItem(self.itemAtRow(index), expandChildren: true)
+        }
     }
 
     func recursivePreorderTraversal(nodes: [NSTreeNode]?) -> Array<SearchableNode> {
