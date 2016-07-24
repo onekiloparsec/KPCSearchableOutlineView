@@ -51,10 +51,12 @@
 		9F80BF3A1CEC6272006CBECA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F80BF3D1CEC6272006CBECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F80BF3F1CEC6272006CBECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F9B7B181D44CADC0003FA00 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9F9B7B1B1D44CB010003FA00 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		9FBB2B731D3A7168005D2784 /* DefaultWebsites.dict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultWebsites.dict; sourceTree = "<group>"; };
 		9FBB2B751D3A7184005D2784 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		9FD7605A1CE9FA1D007EE7CB /* KPCSearchableOutlineView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KPCSearchableOutlineView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9FD7605F1CE9FA1D007EE7CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FD7605F1CE9FA1D007EE7CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = KPCSearchableOutlineView/Info.plist; sourceTree = "<group>"; };
 		9FD760671CE9FDC7007EE7CB /* SearchableOutlineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchableOutlineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,10 +94,21 @@
 			path = KPCSearchableOutlineViewDemo;
 			sourceTree = "<group>";
 		};
+		9F9B7B1A1D44CAEF0003FA00 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9FD7605F1CE9FA1D007EE7CB /* Info.plist */,
+				9F9B7B181D44CADC0003FA00 /* README.md */,
+				9F9B7B1B1D44CB010003FA00 /* LICENSE */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		9FD760501CE9FA1D007EE7CB = {
 			isa = PBXGroup;
 			children = (
 				9FD7605C1CE9FA1D007EE7CB /* KPCSearchableOutlineView */,
+				9F9B7B1A1D44CAEF0003FA00 /* Supporting Files */,
 				9F80BF351CEC6272006CBECA /* KPCSearchableOutlineViewDemo */,
 				9FD7605B1CE9FA1D007EE7CB /* Products */,
 			);
@@ -114,7 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				9FD760671CE9FDC7007EE7CB /* SearchableOutlineView.swift */,
-				9FD7605F1CE9FA1D007EE7CB /* Info.plist */,
 			);
 			path = KPCSearchableOutlineView;
 			sourceTree = "<group>";
