@@ -35,7 +35,7 @@ public protocol SearchableNode: NSObjectProtocol {
     var originalChildren: NSMutableArray { get set }
 
     func hash() -> Int
-    func searchableContent() -> String
+    var searchableContent: String { get }
     
     func parentNode() -> SearchableNode?
     func indexPath() -> NSIndexPath
@@ -50,7 +50,7 @@ public extension CollectionType where Generator.Element == SearchableNode {
 public extension SearchableNode {
     // This assume the content in a node is always unique!
     func hash() -> Int {
-        return self.searchableContent().hash
+        return self.searchableContent.hash
     }
     
     func indexPath() -> NSIndexPath {
@@ -95,7 +95,7 @@ public class SearchableOutlineView: NSOutlineView {
         }
         
         let flatNodes = recursivePreorderTraversal(self.treeController?.arrangedObjects.childNodes)
-        let filteredNodes = flatNodes.filter({ $0.searchableContent().lowercaseString.rangeOfString(filter.lowercaseString) != nil })
+        let filteredNodes = flatNodes.filter({ $0.searchableContent.lowercaseString.rangeOfString(filter.lowercaseString) != nil })
         let filteredLeafNodes = filteredNodes.filter({ $0.children == nil || $0.children.count == 0 })
         
         var rootNodes: [SearchableNode] = []

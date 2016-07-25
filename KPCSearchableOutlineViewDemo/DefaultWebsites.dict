@@ -244,6 +244,48 @@
 					<key>url</key>
 					<string>http://www.ivoa.net/</string>
 				</dict>
+				<dict>
+					<key>entries</key>
+					<array>
+						<dict>
+							<key>group</key>
+							<string>Sub Archives</string>
+                            <key>entries</key>
+                            <array>
+                                <dict>
+                                    <key>name</key>
+                                    <string>ESO</string>
+                                    <key>url</key>
+                                    <string>http://archive.eso.org/cms.html</string>
+                                </dict>
+                                <dict>
+                                    <key>name</key>
+                                    <string>MAST</string>
+                                    <key>url</key>
+                                    <string>http://archive.stsci.edu/</string>
+                                </dict>
+                                <dict>
+                                    <key>name</key>
+                                    <string>CADC</string>
+                                    <key>url</key>
+                                    <string>http://cadcwww.dao.nrc.ca/cadc/</string>
+                                </dict>
+                                <dict>
+                                    <key>name</key>
+                                    <string>ALADIN</string>
+                                    <key>url</key>
+                                    <string>http://aladin.u-strasbg.fr/aladin.gml</string>
+                                </dict>
+                                <dict>
+                                    <key>name</key>
+                                    <string>IVOA</string>
+                                    <key>url</key>
+                                    <string>http://www.ivoa.net/</string>
+                                </dict>
+                            </array>
+						</dict>
+					</array>
+				</dict>
 			</array>
 		</dict>
 	</array>

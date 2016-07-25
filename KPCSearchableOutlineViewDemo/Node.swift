@@ -17,8 +17,8 @@ import KPCSearchableOutlineView
     var originalChildren: NSMutableArray = NSMutableArray()
     weak var parent: SearchableNode?
     
-    func searchableContent() -> String {
-        return (self.nodeTitle == nil) ? "" : self.nodeTitle!
+    var searchableContent: String {
+        get { return (self.nodeTitle == nil) ? "" : self.nodeTitle! }
     }
     
     func parentNode() -> SearchableNode? {

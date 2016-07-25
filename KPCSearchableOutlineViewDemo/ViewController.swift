@@ -66,15 +66,18 @@ class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDele
     }
     
     func loadWebsitesPlistFile() {
+        self.treeController?.selectsInsertedObjects = true
+        
         let path = NSBundle.mainBundle().pathForResource("DefaultWebsites", ofType:"dict")!
         let url = NSURL(fileURLWithPath: path)
         let data = NSData(contentsOfURL: url)
         let plist = try! NSPropertyListSerialization.propertyListWithData(data!, options: .MutableContainers, format: nil) as! NSDictionary
-        
         let entries: [[String: AnyObject]] = plist.objectForKey("entries")! as! [[String : AnyObject]]
-        
-        print("\(plist)")
-        self.treeController?.selectsInsertedObjects = true
+
+        self.loadWebsiteEntries(entries, rootNode: nil)
+    }
+    
+    func loadWebsiteEntries(entries: [[String: AnyObject]], rootNode: BaseNode?) {
         
         for entry in entries {
             let groupName = entry["group"] as! String
@@ -83,19 +86,34 @@ class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDele
             let groupNode = BaseNode()
             groupNode.nodeTitle = groupName
             Swift.print("GroupNode \(groupNode.nodeTitle!)")
-            self.treeController?.addObject(groupNode)
+            
+            if rootNode != nil {
+                groupNode.parent = rootNode
+                rootNode!.children.addObject(groupNode)
+                self.treeController?.addChild(groupNode)
+            }
+            else {
+                self.treeController?.addObject(groupNode)
+            }
             self.treeController?.rearrangeObjects()
             
             for groupEntry in groupEntries {
-                let node = BaseNode()
-                node.nodeTitle = (groupEntry["name"] as! String)
-                node.url = (groupEntry["url"] as! String)
-                node.parent = groupNode
-                groupNode.children.addObject(node)
-                self.treeController?.addChild(groupNode)
-                self.treeController?.rearrangeObjects()
+                if groupEntry["name"] != nil {
+                    let node = BaseNode()
+                    node.nodeTitle = (groupEntry["name"] as! String)
+                    node.url = (groupEntry["url"] as! String)
+                    node.parent = groupNode
+                    groupNode.children.addObject(node)
+                    self.treeController?.addChild(groupNode)
+                    self.treeController?.rearrangeObjects()
+                }
+                else if groupEntry["entries"] != nil {
+                    self.loadWebsiteEntries(groupEntry["entries"] as! [[String: AnyObject]], rootNode: groupNode)
+                }
             }
         }
+        
+        
     }
 }
 
