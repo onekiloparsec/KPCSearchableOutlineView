@@ -2,7 +2,7 @@
 <img src="http://onekilopars.ec/s/OnekiloparsecProComponents.png" width="90%" />
 </h3>
 <p align="center">
-<b>KPCTabsControl</b> &bull;
+<a href="https://github.com/onekiloparsec/KPCTabsControl">KPCTabsControl</a> &bull;
 <a href="https://github.com/onekiloparsec/KPCJumpBarControl">KPCJumpBarControl</a> &bull;
 <a href="https://github.com/onekiloparsec/KPCSplitPanes">KPCSplitPanes</a> &bull;
 <a href="https://github.com/onekiloparsec/KPCAppTermination">KPCAppTermination</a> &bull;
