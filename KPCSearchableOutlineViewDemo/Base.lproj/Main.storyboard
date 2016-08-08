@@ -737,6 +737,7 @@
                                                         <bool key="NSValidatesImmediately" value="YES"/>
                                                     </dictionary>
                                                 </binding>
+                                                <outlet property="messageLabel" destination="vBA-Jc-P1F" id="adt-v9-x3K"/>
                                                 <outlet property="treeController" destination="M2P-Um-1dC" id="7Gn-Zf-C8k"/>
                                             </connections>
                                         </outlineView>
@@ -770,9 +771,22 @@
                                     <outlet property="delegate" destination="XfG-lQ-9wD" id="cGU-eo-2UI"/>
                                 </connections>
                             </searchField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vBA-Jc-P1F">
+                                <rect key="frame" x="50" y="307" width="229" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="225" id="xVB-9O-BdT"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="qYN-aa-W8t">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="vBA-Jc-P1F" firstAttribute="centerX" secondItem="6RI-wL-JHa" secondAttribute="centerX" id="3E7-3g-g3b"/>
                             <constraint firstAttribute="bottom" secondItem="xD4-ZA-Vk6" secondAttribute="bottom" constant="20" id="EtR-kX-0Iv"/>
+                            <constraint firstItem="vBA-Jc-P1F" firstAttribute="centerY" secondItem="6RI-wL-JHa" secondAttribute="centerY" id="G2c-Aw-QGK"/>
                             <constraint firstItem="xD4-ZA-Vk6" firstAttribute="top" secondItem="CQI-sX-rsc" secondAttribute="bottom" constant="20" id="PeJ-oG-oaK"/>
                             <constraint firstItem="xD4-ZA-Vk6" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="Psz-Rb-Erb"/>
                             <constraint firstItem="CQI-sX-rsc" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="UdC-jr-JEA"/>

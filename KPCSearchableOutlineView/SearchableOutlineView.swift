@@ -76,17 +76,12 @@ public class SearchableOutlineView: NSOutlineView {
     @IBOutlet var messageLabel: NSTextField?
     @IBOutlet var treeController: NSTreeController?
 
-    var searchableKeyPaths = []
-
-    private var filteredTreeController: NSTreeController?
     private var filter: String = ""
 
     public func filterNodesTree(withString newFilter: String?) throws {
         guard newFilter != nil && newFilter?.characters.count >= 2, let filter = newFilter else {
             self.filter = ""
             self.messageLabel?.hidden = true
-//            [self.outlineScrollView setHidden:NO];
-//            [self.filteredOutlineScrollView setHidden:YES];
             return
         }
         
@@ -94,9 +89,16 @@ public class SearchableOutlineView: NSOutlineView {
             throw SearchableOutlineViewError.MissingTreeController
         }
         
+        self.filter = filter
         let flatNodes = recursivePreorderTraversal(self.treeController?.arrangedObjects.childNodes)
         let filteredNodes = flatNodes.filter({ $0.searchableContent.lowercaseString.rangeOfString(filter.lowercaseString) != nil })
         let filteredLeafNodes = filteredNodes.filter({ $0.children == nil || $0.children.count == 0 })
+        
+        if filteredLeafNodes.count == 0 {
+            self.messageLabel?.hidden = false
+            self.messageLabel?.stringValue = "No elements found"
+            return
+        }
         
         var rootNodes: [SearchableNode] = []
 
