@@ -3,7 +3,7 @@
 //  KPCSearchableOutlineView
 //
 //  Created by Cédric Foellmi on 16/07/16.
-//  Copyright © 2016 onekiloparsec. All rights reserved.
+//  Licensed under the MIT License (see LICENSE file)
 //
 
 import Cocoa
