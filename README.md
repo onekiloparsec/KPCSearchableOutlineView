@@ -6,7 +6,7 @@
   <a href="https://github.com/onekiloparsec/KPCJumpBarControl">KPCJumpBarControl</a> &bull;
   <a href="https://github.com/onekiloparsec/KPCSplitPanes">KPCSplitPanes</a> &bull;
   <a href="https://github.com/onekiloparsec/KPCAppTermination">KPCAppTermination</a> &bull;
-  <b>KPCSearchableOutlineView</b> 
+  <b>KPCSearchableOutlineView</b> &bull;
   <a href="https://github.com/onekiloparsec/KPCImportSheetController">KPCImportSheetController</a>
 </p>
 
