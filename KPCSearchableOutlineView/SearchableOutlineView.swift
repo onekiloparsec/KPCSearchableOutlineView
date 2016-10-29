@@ -8,24 +8,41 @@
 
 import AppKit
 
-extension NSIndexPath {
-    
-    func lastIndex() -> Int {
-        return self.indexAtPosition(self.length-1);
-    }
-    
-    func indexPathByAddingIndexPath(indexPath: NSIndexPath?) -> NSIndexPath {
-        var path = self.copy() as! NSIndexPath
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
+
+extension IndexPath {
+        
+    func indexPathByAddingIndexPath(_ indexPath: IndexPath?) -> IndexPath {
+        var path = self
         if let ip = indexPath {
-            for position in 0..<ip.length {
-                path = path.indexPathByAddingIndex(ip.indexAtPosition(position))
+            for position in 0..<ip.count {
+                path.append(ip.index(position, offsetBy: 0))
             }
         }
         return path
     }
     
-    func indexPathByAddingIndexInFront(index: Int) -> NSIndexPath {
-        let indexPath = NSIndexPath(index: index)
+    func indexPathByAddingIndexInFront(_ index: Int) -> IndexPath {
+        let indexPath = IndexPath(index: index)
         return indexPath.indexPathByAddingIndexPath(self)
     }
 }
@@ -38,12 +55,12 @@ public protocol SearchableNode: NSObjectProtocol {
     var searchableContent: String { get }
     
     func parentNode() -> SearchableNode?
-    func indexPath() -> NSIndexPath
+    func indexPath() -> IndexPath
 }
 
-public extension CollectionType where Generator.Element == SearchableNode {
-    func indexOf(element: Generator.Element) -> Index? {
-        return indexOf({ $0.hash() == element.hash() })
+public extension Collection where Iterator.Element == SearchableNode {
+    func indexOf(_ element: Iterator.Element) -> Index? {
+        return index(where: { $0.hash() == element.hash() })
     }
 }
 
@@ -53,12 +70,12 @@ public extension SearchableNode {
         return self.searchableContent.hash
     }
     
-    func indexPath() -> NSIndexPath {
-        var indexPath = NSIndexPath()
+    func indexPath() -> IndexPath {
+        var indexPath = IndexPath()
         var activeNode: SearchableNode = self
         
         while activeNode.parentNode() != nil {
-            let index = activeNode.parentNode()!.children.indexOfObject(self)
+            let index = activeNode.parentNode()!.children.index(of: self)
             indexPath = indexPath.indexPathByAddingIndexInFront(index)
             activeNode = activeNode.parentNode()!
         }
@@ -67,35 +84,41 @@ public extension SearchableNode {
     }
 }
 
-enum SearchableOutlineViewError: ErrorType {
-    case MissingTreeController
+enum SearchableOutlineViewError: Error {
+    case missingTreeController
 }
 
-public class SearchableOutlineView: NSOutlineView {
+open class SearchableOutlineView: NSOutlineView {
     
     @IBOutlet var messageLabel: NSTextField?
     @IBOutlet var treeController: NSTreeController?
 
-    private var filter: String = ""
+    fileprivate var filter: String = ""
 
-    public func filterNodesTree(withString newFilter: String?) throws {
+    open func filterNodesTree(withString newFilter: String?) throws {
         guard newFilter != nil && newFilter?.characters.count >= 2, let filter = newFilter else {
             self.filter = ""
-            self.messageLabel?.hidden = true
+            self.messageLabel?.isHidden = true
             return
         }
         
         guard self.treeController != nil else {
-            throw SearchableOutlineViewError.MissingTreeController
+            throw SearchableOutlineViewError.missingTreeController
+        }
+        
+        guard let rootTreeNode = self.treeController?.arrangedObjects as AnyObject? else {
+            return
         }
         
         self.filter = filter
-        let flatNodes = recursivePreorderTraversal(self.treeController?.arrangedObjects.childNodes)
-        let filteredNodes = flatNodes.filter({ $0.searchableContent.lowercaseString.rangeOfString(filter.lowercaseString) != nil })
-        let filteredLeafNodes = filteredNodes.filter({ $0.children == nil || $0.children.count == 0 })
+
+        let proxyChildren = rootTreeNode.children as [NSTreeNode]?
+        let flatNodes = recursivePreorderTraversal(proxyChildren!)
+        let filteredNodes = flatNodes.filter({ $0.searchableContent.lowercased().range(of: filter.lowercased()) != nil })
+        let filteredLeafNodes = filteredNodes.filter({ $0.children.count == 0 })
         
         if filteredLeafNodes.count == 0 {
-            self.messageLabel?.hidden = false
+            self.messageLabel?.isHidden = false
             self.messageLabel?.stringValue = "No elements found"
             return
         }
@@ -108,7 +131,7 @@ public class SearchableOutlineView: NSOutlineView {
         for leafNode in filteredLeafNodes {
             if let parentNode = leafNode.parentNode() {
                 if parentNode.originalChildren.count == 0 && parentNode.children.count > 0 {
-                    parentNode.originalChildren.addObjectsFromArray(parentNode.children as [AnyObject])
+                    parentNode.originalChildren.addObjects(from: parentNode.children as [AnyObject])
                     parentNode.children.removeAllObjects()
                 }
             }
@@ -117,7 +140,7 @@ public class SearchableOutlineView: NSOutlineView {
         // Re-introduce only valid one.
         for leafNode in filteredLeafNodes {
             if let parentNode = leafNode.parentNode() {
-                parentNode.children.addObject(leafNode)
+                parentNode.children.add(leafNode)
             }
             
             var rootNode = leafNode
@@ -127,28 +150,28 @@ public class SearchableOutlineView: NSOutlineView {
             rootNodes.append(rootNode)
         }
 
-        self.treeController?.content?.removeAllObjects()
+        (self.treeController?.content as! NSMutableArray).removeAllObjects()
         self.treeController?.rearrangeObjects()
         
         let indexSet = NSMutableIndexSet()
-        for (index, rootNode) in rootNodes.enumerate() {
-            self.treeController?.insertObject(rootNode, atArrangedObjectIndexPath: NSIndexPath(index: index))
-            indexSet.addIndex(index)
+        for (index, rootNode) in rootNodes.enumerated() {
+            self.treeController?.insert(rootNode, atArrangedObjectIndexPath: IndexPath(index: index))
+            indexSet.add(index)
         }
         
         for index in indexSet {
-            self.expandItem(self.itemAtRow(index), expandChildren: true)
+            self.expandItem(self.item(atRow: index), expandChildren: true)
         }
     }
 
-    func recursivePreorderTraversal(nodes: [NSTreeNode]?) -> Array<SearchableNode> {
+    func recursivePreorderTraversal(_ nodes: [NSTreeNode]?) -> Array<SearchableNode> {
         if nodes == nil {
             return []
         }
         var result: [SearchableNode] = []
         result += nodes!.filter({ $0.representedObject != nil }).map({ return $0.representedObject! as! SearchableNode })
         for node in nodes! {
-            result += recursivePreorderTraversal(node.childNodes)
+            result += recursivePreorderTraversal(node.children)
         }
         return result
     }

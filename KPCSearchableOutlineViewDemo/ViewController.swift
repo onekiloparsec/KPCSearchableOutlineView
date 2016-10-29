@@ -21,7 +21,7 @@ class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.outlineView?.setDelegate(self)
+        self.outlineView?.delegate = self
         self.searchField?.delegate = self
         
         self.nodes = []
@@ -30,9 +30,9 @@ class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDele
         self.loadWebsitesPlistFile()
     }
     
-    func outlineView(outlineView: NSOutlineView, viewForTableColumn tableColumn: NSTableColumn?, item: AnyObject) -> NSView? {
-        let cellView: NSTableCellView = self.outlineView?.makeViewWithIdentifier("DataCell", owner:nil) as! NSTableCellView
-        let node = item.representedObject as! BaseNode
+    func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
+        let cellView: NSTableCellView = self.outlineView?.make(withIdentifier: "DataCell", owner:nil) as! NSTableCellView
+        let node = (item as AnyObject).representedObject as! BaseNode
         if let title = node.nodeTitle {
             cellView.textField?.stringValue = title
         }
@@ -40,7 +40,7 @@ class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDele
             cellView.textField?.stringValue = "?"
         }
         if node.children.count > 0 {
-            cellView.imageView?.image = NSWorkspace.sharedWorkspace().iconForFileType(NSFileTypeForHFSTypeCode(UInt32(kGenericFolderIcon)))
+            cellView.imageView?.image = NSWorkspace.shared().icon(forFileType: NSFileTypeForHFSTypeCode(UInt32(kGenericFolderIcon)))
         }
         else {
             cellView.imageView?.image = nil
@@ -48,15 +48,15 @@ class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDele
         return cellView
     }
         
-    func outlineView(outlineView: NSOutlineView, isGroupItem item: AnyObject) -> Bool {
+    func outlineView(_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool {
         return false
     }
 
-    func searchFieldDidStartSearching(sender: NSSearchField) {
+    func searchFieldDidStartSearching(_ sender: NSSearchField) {
         Swift.print("Start Searching")
     }
     
-    override func controlTextDidChange(notification: NSNotification) {
+    override func controlTextDidChange(_ notification: Notification) {
         if let searchField = notification.object as? NSSearchField {
             if searchField.stringValue.characters.count >= 3 {
                 Swift.print("Searching: \(searchField.stringValue)...")
@@ -68,16 +68,16 @@ class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDele
     func loadWebsitesPlistFile() {
         self.treeController?.selectsInsertedObjects = true
         
-        let path = NSBundle.mainBundle().pathForResource("DefaultWebsites", ofType:"dict")!
-        let url = NSURL(fileURLWithPath: path)
-        let data = NSData(contentsOfURL: url)
-        let plist = try! NSPropertyListSerialization.propertyListWithData(data!, options: .MutableContainers, format: nil) as! NSDictionary
-        let entries: [[String: AnyObject]] = plist.objectForKey("entries")! as! [[String : AnyObject]]
+        let path = Bundle.main.path(forResource: "DefaultWebsites", ofType:"dict")!
+        let url = URL(fileURLWithPath: path)
+        let data = try? Data(contentsOf: url)
+        let plist = try! PropertyListSerialization.propertyList(from: data!, options: .mutableContainers, format: nil) as! NSDictionary
+        let entries: [[String: AnyObject]] = plist.object(forKey: "entries")! as! [[String : AnyObject]]
 
         self.loadWebsiteEntries(entries, rootNode: nil)
     }
     
-    func loadWebsiteEntries(entries: [[String: AnyObject]], rootNode: BaseNode?) {
+    func loadWebsiteEntries(_ entries: [[String: AnyObject]], rootNode: BaseNode?) {
         
         for entry in entries {
             let groupName = entry["group"] as! String
@@ -89,7 +89,7 @@ class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDele
             
             if rootNode != nil {
                 groupNode.parent = rootNode
-                rootNode!.children.addObject(groupNode)
+                rootNode!.children.add(groupNode)
                 self.treeController?.addChild(groupNode)
             }
             else {
@@ -103,7 +103,7 @@ class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDele
                     node.nodeTitle = (groupEntry["name"] as! String)
                     node.url = (groupEntry["url"] as! String)
                     node.parent = groupNode
-                    groupNode.children.addObject(node)
+                    groupNode.children.add(node)
                     self.treeController?.addChild(groupNode)
                     self.treeController?.rearrangeObjects()
                 }
