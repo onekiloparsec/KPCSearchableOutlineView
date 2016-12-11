@@ -39,7 +39,7 @@ class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDele
         else {
             cellView.textField?.stringValue = "?"
         }
-        if node.children.count > 0 {
+        if node.childNodes.count > 0 {
             cellView.imageView?.image = NSWorkspace.shared().icon(forFileType: NSFileTypeForHFSTypeCode(UInt32(kGenericFolderIcon)))
         }
         else {
@@ -88,8 +88,8 @@ class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDele
             Swift.print("GroupNode \(groupNode.nodeTitle!)")
             
             if rootNode != nil {
-                groupNode.parent = rootNode
-                rootNode!.children.add(groupNode)
+                groupNode.parentNode = rootNode
+                rootNode!.childNodes.append(groupNode)
                 self.treeController?.addChild(groupNode)
             }
             else {
@@ -102,8 +102,8 @@ class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDele
                     let node = BaseNode()
                     node.nodeTitle = (groupEntry["name"] as! String)
                     node.url = (groupEntry["url"] as! String)
-                    node.parent = groupNode
-                    groupNode.children.add(node)
+                    node.parentNode = groupNode
+                    groupNode.childNodes.append(node)
                     self.treeController?.addChild(groupNode)
                     self.treeController?.rearrangeObjects()
                 }

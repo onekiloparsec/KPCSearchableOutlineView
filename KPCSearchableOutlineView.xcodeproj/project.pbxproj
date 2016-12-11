@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F0AC2141DFDAC1A00E86A0E /* SearchableNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AC2131DFDAC1A00E86A0E /* SearchableNode.swift */; };
 		9F1E5A871CF1975100D18959 /* KPCSearchableOutlineView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD7605A1CE9FA1D007EE7CB /* KPCSearchableOutlineView.framework */; };
 		9F1E5A891CF1976400D18959 /* KPCSearchableOutlineView.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD7605A1CE9FA1D007EE7CB /* KPCSearchableOutlineView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9F80BF371CEC6272006CBECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F80BF361CEC6272006CBECA /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9F0AC2131DFDAC1A00E86A0E /* SearchableNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchableNode.swift; sourceTree = "<group>"; };
 		9F80BF341CEC6272006CBECA /* KPCSearchableOutlineViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KPCSearchableOutlineViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F80BF361CEC6272006CBECA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F80BF381CEC6272006CBECA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				9FD760671CE9FDC7007EE7CB /* SearchableOutlineView.swift */,
+				9F0AC2131DFDAC1A00E86A0E /* SearchableNode.swift */,
 			);
 			path = KPCSearchableOutlineView;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FD760681CE9FDC7007EE7CB /* SearchableOutlineView.swift in Sources */,
+				9F0AC2141DFDAC1A00E86A0E /* SearchableNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

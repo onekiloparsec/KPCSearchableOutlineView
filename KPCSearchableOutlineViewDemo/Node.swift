@@ -11,21 +11,23 @@ import KPCSearchableOutlineView
 
 @objc class BaseNode: NSObject, SearchableNode {
 
+    var uuid = UUID()
     var nodeTitle: String? = nil
     var url: String? = nil
-    var children: NSMutableArray = NSMutableArray()
-    var originalChildren: NSMutableArray = NSMutableArray()
-    weak var parent: SearchableNode?
-    
-    var searchableContent: String {
-        get { return (self.nodeTitle == nil) ? "" : self.nodeTitle! }
+    var childNodes = [SearchableNode]()
+    var originalChildNodes = [SearchableNode]()
+    weak var parentNode: SearchableNode?
+
+    var children: NSMutableArray {
+        get { return NSMutableArray(array: self.childNodes) }
+        set { self.childNodes = newValue.map {$0} as! [BaseNode] }
     }
-    
-    func parentNode() -> SearchableNode? {
-        return self.parent
+
+    func searchableContent() -> String {
+        return (self.nodeTitle == nil) ? "" : self.nodeTitle! 
     }
-    
+        
     func isLeaf() -> Bool {
-        return self.children.count == 0
+        return self.childNodes.count == 0
     }
 }

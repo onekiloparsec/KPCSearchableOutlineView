@@ -8,95 +8,19 @@
 
 import AppKit
 
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l >= r
-  default:
-    return !(lhs < rhs)
-  }
-}
-
-
-extension IndexPath {
-        
-    func indexPathByAddingIndexPath(_ indexPath: IndexPath?) -> IndexPath {
-        var path = self
-        if let ip = indexPath {
-            for position in 0..<ip.count {
-                path.append(ip.index(position, offsetBy: 0))
-            }
-        }
-        return path
-    }
-    
-    func indexPathByAddingIndexInFront(_ index: Int) -> IndexPath {
-        let indexPath = IndexPath(index: index)
-        return indexPath.indexPathByAddingIndexPath(self)
-    }
-}
-
-public protocol SearchableNode: NSObjectProtocol {
-    var children: NSMutableArray { get set }
-    var originalChildren: NSMutableArray { get set }
-
-    func hash() -> Int
-    var searchableContent: String { get }
-    
-    func parentNode() -> SearchableNode?
-    func indexPath() -> IndexPath
-}
-
-public extension Collection where Iterator.Element == SearchableNode {
-    func indexOf(_ element: Iterator.Element) -> Index? {
-        return index(where: { $0.hash() == element.hash() })
-    }
-}
-
-public extension SearchableNode {
-    // This assume the content in a node is always unique!
-    func hash() -> Int {
-        return self.searchableContent.hash
-    }
-    
-    func indexPath() -> IndexPath {
-        var indexPath = IndexPath()
-        var activeNode: SearchableNode = self
-        
-        while activeNode.parentNode() != nil {
-            let index = activeNode.parentNode()!.children.index(of: self)
-            indexPath = indexPath.indexPathByAddingIndexInFront(index)
-            activeNode = activeNode.parentNode()!
-        }
-        
-        return indexPath
-    }
-}
-
 enum SearchableOutlineViewError: Error {
     case missingTreeController
 }
 
 open class SearchableOutlineView: NSOutlineView {
     
-    @IBOutlet var messageLabel: NSTextField?
-    @IBOutlet var treeController: NSTreeController?
+    @IBOutlet open var messageLabel: NSTextField?
+    @IBOutlet open var treeController: NSTreeController?
 
     fileprivate var filter: String = ""
 
     open func filterNodesTree(withString newFilter: String?) throws {
-        guard newFilter != nil && newFilter?.characters.count >= 2, let filter = newFilter else {
+        guard newFilter != nil && newFilter!.characters.count >= 2, let filter = newFilter else {
             self.filter = ""
             self.messageLabel?.isHidden = true
             return
@@ -114,8 +38,8 @@ open class SearchableOutlineView: NSOutlineView {
 
         let proxyChildren = rootTreeNode.children as [NSTreeNode]?
         let flatNodes = recursivePreorderTraversal(proxyChildren!)
-        let filteredNodes = flatNodes.filter({ $0.searchableContent.lowercased().range(of: filter.lowercased()) != nil })
-        let filteredLeafNodes = filteredNodes.filter({ $0.children.count == 0 })
+        let filteredNodes = flatNodes.filter({ $0.searchableContent().lowercased().range(of: filter.lowercased()) != nil })
+        let filteredLeafNodes = filteredNodes.filter({ $0.childNodes.count == 0 })
         
         if filteredLeafNodes.count == 0 {
             self.messageLabel?.isHidden = false
@@ -129,23 +53,23 @@ open class SearchableOutlineView: NSOutlineView {
         
         // Move aside all regular children into a temporary array
         for leafNode in filteredLeafNodes {
-            if let parentNode = leafNode.parentNode() {
-                if parentNode.originalChildren.count == 0 && parentNode.children.count > 0 {
-                    parentNode.originalChildren.addObjects(from: parentNode.children as [AnyObject])
-                    parentNode.children.removeAllObjects()
+            if let parentNode = leafNode.parentNode {
+                if parentNode.originalChildNodes.count == 0 && parentNode.childNodes.count > 0 {
+                    parentNode.originalChildNodes.append(contentsOf: parentNode.childNodes)
+                    parentNode.childNodes.removeAll()
                 }
             }
         }
 
         // Re-introduce only valid one.
         for leafNode in filteredLeafNodes {
-            if let parentNode = leafNode.parentNode() {
-                parentNode.children.add(leafNode)
+            if let parentNode = leafNode.parentNode {
+                parentNode.childNodes.append(leafNode)
             }
             
             var rootNode = leafNode
-            while rootNode.parentNode() != nil {
-                rootNode = rootNode.parentNode()!
+            while rootNode.parentNode != nil {
+                rootNode = rootNode.parentNode!
             }
             rootNodes.append(rootNode)
         }
