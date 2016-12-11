@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:KPCSearchableOutlineView.xcodeproj">
+      location = "self:/Users/onekiloparsec/apps/KPCSearchableOutlineView/SearchableOutlineView.xcodeproj">
    </FileRef>
 </Workspace>

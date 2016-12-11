@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import KPCSearchableOutlineView
+import SearchableOutlineView
 
 @objc class BaseNode: NSObject, SearchableNode {
 

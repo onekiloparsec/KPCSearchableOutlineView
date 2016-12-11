@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import KPCSearchableOutlineView
+import SearchableOutlineView
 
 class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDelegate {
     

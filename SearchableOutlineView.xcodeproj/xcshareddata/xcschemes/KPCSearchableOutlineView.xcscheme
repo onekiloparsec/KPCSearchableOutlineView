@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9FD760591CE9FA1D007EE7CB"
-               BuildableName = "KPCSearchableOutlineView.framework"
-               BlueprintName = "KPCSearchableOutlineView"
-               ReferencedContainer = "container:KPCSearchableOutlineView.xcodeproj">
+               BuildableName = "SearchableOutlineView.framework"
+               BlueprintName = "SearchableOutlineView"
+               ReferencedContainer = "container:SearchableOutlineView.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,9 +46,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9FD760591CE9FA1D007EE7CB"
-            BuildableName = "KPCSearchableOutlineView.framework"
-            BlueprintName = "KPCSearchableOutlineView"
-            ReferencedContainer = "container:KPCSearchableOutlineView.xcodeproj">
+            BuildableName = "SearchableOutlineView.framework"
+            BlueprintName = "SearchableOutlineView"
+            ReferencedContainer = "container:SearchableOutlineView.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -64,9 +64,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9FD760591CE9FA1D007EE7CB"
-            BuildableName = "KPCSearchableOutlineView.framework"
-            BlueprintName = "KPCSearchableOutlineView"
-            ReferencedContainer = "container:KPCSearchableOutlineView.xcodeproj">
+            BuildableName = "SearchableOutlineView.framework"
+            BlueprintName = "SearchableOutlineView"
+            ReferencedContainer = "container:SearchableOutlineView.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
