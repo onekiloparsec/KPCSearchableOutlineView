@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import SearchableOutlineView
+import KPCSearchableOutlineView
 
 class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDelegate {
     
@@ -31,7 +31,7 @@ class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDele
     }
     
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
-        let cellView: NSTableCellView = self.outlineView?.make(withIdentifier: "DataCell", owner:nil) as! NSTableCellView
+        let cellView: NSTableCellView = self.outlineView?.makeView(withIdentifier: convertToNSUserInterfaceItemIdentifier("DataCell"), owner:nil) as! NSTableCellView
         let node = (item as AnyObject).representedObject as! BaseNode
         if let title = node.nodeTitle {
             cellView.textField?.stringValue = title
@@ -40,7 +40,7 @@ class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDele
             cellView.textField?.stringValue = "?"
         }
         if node.childNodes.count > 0 {
-            cellView.imageView?.image = NSWorkspace.shared().icon(forFileType: NSFileTypeForHFSTypeCode(UInt32(kGenericFolderIcon)))
+            cellView.imageView?.image = NSWorkspace.shared.icon(forFileType: NSFileTypeForHFSTypeCode(UInt32(kGenericFolderIcon)))
         }
         else {
             cellView.imageView?.image = nil
@@ -56,9 +56,9 @@ class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDele
         Swift.print("Start Searching")
     }
     
-    override func controlTextDidChange(_ notification: Notification) {
+    func controlTextDidChange(_ notification: Notification) {
         if let searchField = notification.object as? NSSearchField {
-            if searchField.stringValue.characters.count >= 3 {
+            if searchField.stringValue.count >= 3 {
                 Swift.print("Searching: \(searchField.stringValue)...")
                 try! self.outlineView?.filterNodesTree(withString: searchField.stringValue)
             }
@@ -117,3 +117,8 @@ class ViewController: NSViewController, NSOutlineViewDelegate, NSSearchFieldDele
     }
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSUserInterfaceItemIdentifier(_ input: String) -> NSUserInterfaceItemIdentifier {
+	return NSUserInterfaceItemIdentifier(rawValue: input)
+}

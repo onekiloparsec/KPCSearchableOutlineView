@@ -7,9 +7,9 @@
 //
 
 import Cocoa
-import SearchableOutlineView
+import KPCSearchableOutlineView
 
-@objc class BaseNode: NSObject, SearchableNode {
+@objcMembers class BaseNode: NSObject, SearchableNode {
 
     var uuid = UUID()
     var nodeTitle: String? = nil

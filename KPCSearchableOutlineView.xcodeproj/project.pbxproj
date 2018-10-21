@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9F0AC2141DFDAC1A00E86A0E /* SearchableNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AC2131DFDAC1A00E86A0E /* SearchableNode.swift */; };
-		9F1E5A871CF1975100D18959 /* SearchableOutlineView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD7605A1CE9FA1D007EE7CB /* SearchableOutlineView.framework */; };
-		9F1E5A891CF1976400D18959 /* SearchableOutlineView.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD7605A1CE9FA1D007EE7CB /* SearchableOutlineView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9F1E5A871CF1975100D18959 /* KPCSearchableOutlineView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD7605A1CE9FA1D007EE7CB /* KPCSearchableOutlineView.framework */; };
+		9F1E5A891CF1976400D18959 /* KPCSearchableOutlineView.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD7605A1CE9FA1D007EE7CB /* KPCSearchableOutlineView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9F80BF371CEC6272006CBECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F80BF361CEC6272006CBECA /* AppDelegate.swift */; };
 		9F80BF391CEC6272006CBECA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F80BF381CEC6272006CBECA /* ViewController.swift */; };
 		9F80BF3B1CEC6272006CBECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F80BF3A1CEC6272006CBECA /* Assets.xcassets */; };
@@ -36,7 +36,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9F1E5A891CF1976400D18959 /* SearchableOutlineView.framework in Copy Frameworks */,
+				9F1E5A891CF1976400D18959 /* KPCSearchableOutlineView.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,7 +45,7 @@
 
 /* Begin PBXFileReference section */
 		9F0AC2131DFDAC1A00E86A0E /* SearchableNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchableNode.swift; sourceTree = "<group>"; };
-		9F80BF341CEC6272006CBECA /* SearchableOutlineViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchableOutlineViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F80BF341CEC6272006CBECA /* KPCSearchableOutlineViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KPCSearchableOutlineViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F80BF361CEC6272006CBECA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F80BF381CEC6272006CBECA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9F80BF3A1CEC6272006CBECA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 		9F9B7B1B1D44CB010003FA00 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		9FBB2B731D3A7168005D2784 /* DefaultWebsites.dict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultWebsites.dict; sourceTree = "<group>"; };
 		9FBB2B751D3A7184005D2784 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		9FD7605A1CE9FA1D007EE7CB /* SearchableOutlineView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SearchableOutlineView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FD7605A1CE9FA1D007EE7CB /* KPCSearchableOutlineView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KPCSearchableOutlineView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FD7605F1CE9FA1D007EE7CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FD760671CE9FDC7007EE7CB /* SearchableOutlineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchableOutlineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F1E5A871CF1975100D18959 /* SearchableOutlineView.framework in Frameworks */,
+				9F1E5A871CF1975100D18959 /* KPCSearchableOutlineView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,8 +117,8 @@
 		9FD7605B1CE9FA1D007EE7CB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9FD7605A1CE9FA1D007EE7CB /* SearchableOutlineView.framework */,
-				9F80BF341CEC6272006CBECA /* SearchableOutlineViewDemo.app */,
+				9FD7605A1CE9FA1D007EE7CB /* KPCSearchableOutlineView.framework */,
+				9F80BF341CEC6272006CBECA /* KPCSearchableOutlineViewDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,9 +145,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		9F80BF331CEC6272006CBECA /* SearchableOutlineViewDemo */ = {
+		9F80BF331CEC6272006CBECA /* KPCSearchableOutlineViewDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9F80BF421CEC6272006CBECA /* Build configuration list for PBXNativeTarget "SearchableOutlineViewDemo" */;
+			buildConfigurationList = 9F80BF421CEC6272006CBECA /* Build configuration list for PBXNativeTarget "KPCSearchableOutlineViewDemo" */;
 			buildPhases = (
 				9F80BF301CEC6272006CBECA /* Sources */,
 				9F80BF311CEC6272006CBECA /* Frameworks */,
@@ -159,14 +159,14 @@
 			dependencies = (
 				9F1E5A861CF1974D00D18959 /* PBXTargetDependency */,
 			);
-			name = SearchableOutlineViewDemo;
+			name = KPCSearchableOutlineViewDemo;
 			productName = KPCSearchableOutlineViewDemo;
-			productReference = 9F80BF341CEC6272006CBECA /* SearchableOutlineViewDemo.app */;
+			productReference = 9F80BF341CEC6272006CBECA /* KPCSearchableOutlineViewDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9FD760591CE9FA1D007EE7CB /* SearchableOutlineView */ = {
+		9FD760591CE9FA1D007EE7CB /* KPCSearchableOutlineView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9FD760621CE9FA1D007EE7CB /* Build configuration list for PBXNativeTarget "SearchableOutlineView" */;
+			buildConfigurationList = 9FD760621CE9FA1D007EE7CB /* Build configuration list for PBXNativeTarget "KPCSearchableOutlineView" */;
 			buildPhases = (
 				9FD760551CE9FA1D007EE7CB /* Sources */,
 				9FD760561CE9FA1D007EE7CB /* Frameworks */,
@@ -177,9 +177,9 @@
 			);
 			dependencies = (
 			);
-			name = SearchableOutlineView;
+			name = KPCSearchableOutlineView;
 			productName = KPCSearchableOutlineView;
-			productReference = 9FD7605A1CE9FA1D007EE7CB /* SearchableOutlineView.framework */;
+			productReference = 9FD7605A1CE9FA1D007EE7CB /* KPCSearchableOutlineView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -189,20 +189,20 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = onekiloparsec;
 				TargetAttributes = {
 					9F80BF331CEC6272006CBECA = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1000;
 					};
 					9FD760591CE9FA1D007EE7CB = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
-			buildConfigurationList = 9FD760541CE9FA1D007EE7CB /* Build configuration list for PBXProject "SearchableOutlineView" */;
+			buildConfigurationList = 9FD760541CE9FA1D007EE7CB /* Build configuration list for PBXProject "KPCSearchableOutlineView" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -215,8 +215,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9FD760591CE9FA1D007EE7CB /* SearchableOutlineView */,
-				9F80BF331CEC6272006CBECA /* SearchableOutlineViewDemo */,
+				9FD760591CE9FA1D007EE7CB /* KPCSearchableOutlineView */,
+				9F80BF331CEC6272006CBECA /* KPCSearchableOutlineViewDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -266,7 +266,7 @@
 /* Begin PBXTargetDependency section */
 		9F1E5A861CF1974D00D18959 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9FD760591CE9FA1D007EE7CB /* SearchableOutlineView */;
+			target = 9FD760591CE9FA1D007EE7CB /* KPCSearchableOutlineView */;
 			targetProxy = 9F1E5A851CF1974D00D18959 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -292,7 +292,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onekiloparsec.SearchableOutlineViewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -305,7 +305,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onekiloparsec.SearchableOutlineViewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -318,14 +318,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -349,7 +357,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -368,14 +376,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -393,7 +409,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -420,7 +436,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -441,14 +457,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.onekiloparsec.SearchableOutlineView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9F80BF421CEC6272006CBECA /* Build configuration list for PBXNativeTarget "SearchableOutlineViewDemo" */ = {
+		9F80BF421CEC6272006CBECA /* Build configuration list for PBXNativeTarget "KPCSearchableOutlineViewDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9F80BF401CEC6272006CBECA /* Debug */,
@@ -457,7 +473,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9FD760541CE9FA1D007EE7CB /* Build configuration list for PBXProject "SearchableOutlineView" */ = {
+		9FD760541CE9FA1D007EE7CB /* Build configuration list for PBXProject "KPCSearchableOutlineView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9FD760601CE9FA1D007EE7CB /* Debug */,
@@ -466,7 +482,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9FD760621CE9FA1D007EE7CB /* Build configuration list for PBXNativeTarget "SearchableOutlineView" */ = {
+		9FD760621CE9FA1D007EE7CB /* Build configuration list for PBXNativeTarget "KPCSearchableOutlineView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9FD760631CE9FA1D007EE7CB /* Debug */,

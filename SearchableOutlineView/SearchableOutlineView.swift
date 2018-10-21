@@ -20,7 +20,7 @@ open class SearchableOutlineView: NSOutlineView {
     fileprivate var filter: String = ""
 
     open func filterNodesTree(withString newFilter: String?) throws {
-        guard newFilter != nil && newFilter!.characters.count >= 2, let filter = newFilter else {
+        guard newFilter != nil && newFilter!.count >= 2, let filter = newFilter else {
             self.filter = ""
             self.messageLabel?.isHidden = true
             return
